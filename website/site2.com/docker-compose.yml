@@ -1,0 +1,15 @@
+version: '3'
+services:
+  nginx:
+    image: nginx
+    restart: always
+    environment:
+      - VIRTUAL_HOST=site2.com
+      - LETSENCRYPT_HOST=site2.com
+      - LETSENCRYPT_EMAIL=email@site2.com
+    volumes:                     
+      - .:/etc/nginx/conf.d
+networks:
+  default:
+    external:
+      name: nginx-proxy-example
